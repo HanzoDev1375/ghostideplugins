@@ -1,0 +1,23 @@
+[
+  {
+    "name": "kotlin",
+    "icon": "https://raw.githubusercontent.com/HanzoDev1375/ghostideplugins/refs/heads/main/kotlin/kotlin.png",
+    "doc": "https://raw.githubusercontent.com/HanzoDev1375/ghostideplugins/refs/heads/main/kotlin/doc.json",
+    "gplfile": "https://github.com/HanzoDev1375/ghostideplugins/blob/main/kotlin/myktlsp.gpl",
+    "source": "https://github.com/HanzoDev1375/ghostideplugins/tree/main/kotlin/KotlinLspGhostPlugin"
+  },
+  {
+    "name": "opencodeai",
+    "icon": "https://raw.githubusercontent.com/HanzoDev1375/ghostideplugins/main/opencodeai/ai.png",
+    "doc": "https://raw.githubusercontent.com/HanzoDev1375/ghostideplugins/main/opencodeai/doc.json",
+    "gplfile": "https://github.com/HanzoDev1375/ghostideplugins/blob/main/opencodeai/opencode.gpl",
+    "source": "https://github.com/HanzoDev1375/ghostideplugins/tree/main/opencodeai/OpenCodeChat"
+  },
+  {
+    "name": "rust",
+    "icon": "https://raw.githubusercontent.com/HanzoDev1375/ghostideplugins/main/rust/rust.png",
+    "doc": "https://raw.githubusercontent.com/HanzoDev1375/ghostideplugins/main/rust/doc.json",
+    "gplfile": "https://github.com/HanzoDev1375/ghostideplugins/blob/main/rust/rustlsp.gpl",
+    "source": "https://github.com/HanzoDev1375/ghostideplugins/tree/main/rust/RustLspGhostPlugin"
+  }
+]
