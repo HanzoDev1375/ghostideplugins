@@ -63,7 +63,7 @@ def main():
             "name": folder_name,
             "icon": f"{RAW_BASE}/{folder_name}/{icon_file}",
             "doc": f"{RAW_BASE}/{folder_name}/doc.json",
-            "gplfile": f"https://github.com/{REPO_OWNER}/{REPO_NAME}/blob/{BRANCH}/{folder_name}/{gpl_file}",
+            "gplfile": f"{RAW_BASE}/{folder_name}/{gpl_file}",
             "source": f"https://github.com/{REPO_OWNER}/{REPO_NAME}/tree/{BRANCH}/{folder_name}/{plugin_dir}",
         }
         local_data.append(new_entry)
