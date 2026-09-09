@@ -19,5 +19,12 @@
     "doc": "https://raw.githubusercontent.com/HanzoDev1375/ghostideplugins/main/rust/doc.json",
     "gplfile": "https://raw.githubusercontent.com/HanzoDev1375/ghostideplugins/main/rust/rustlsp.gpl",
     "source": "https://github.com/HanzoDev1375/ghostideplugins/tree/main/rust/RustLspGhostPlugin"
+  },
+  {
+    "name": "javalsp",
+    "icon": "https://raw.githubusercontent.com/HanzoDev1375/ghostideplugins/main/javalsp/java.png",
+    "doc": "https://raw.githubusercontent.com/HanzoDev1375/ghostideplugins/main/javalsp/doc.json",
+    "gplfile": "https://raw.githubusercontent.com/HanzoDev1375/ghostideplugins/main/javalsp/javalsp.gpl",
+    "source": "https://github.com/HanzoDev1375/ghostideplugins/tree/main/javalsp/JavaLspGhostPlugin"
   }
 ]
