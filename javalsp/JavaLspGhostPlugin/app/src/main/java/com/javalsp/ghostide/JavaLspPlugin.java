@@ -16,16 +16,16 @@ import ir.hanzodev1375.ghostide.plugin.api.PluginContext;
 import ir.hanzodev1375.ghostide.plugin.api.PluginSetupAction;
 
 /**
- * Installs Node.js (apt fallback) and {@code jj-language-server} (Julien Dubois's pure-JavaScript
- * Java LSP, github.com/jdubois/jj-language-server) into the proot rootfs. The server speaks LSP
- * over stdio ({@code jj-language-server --stdio}) using {@code vscode-languageserver} and parses
- * Java with {@code java-parser} (Chevrotain) - it needs no JVM, only Node. On-device footprint is
- * ~15 MB versus ~64 MB + JVM for Eclipse JDT LS.
+ * Installs and runs Eclipse JDT Language Server (jdtls) inside the proot rootfs. Requires an
+ * existing jdtls installation (e.g. {@code ~/jdtls}) and a Java 21+ runtime on the device; the
+ * setup action locates jdtls automatically and creates a stable {@code
+ * /usr/local/bin/java-language-server} wrapper that forwards to {@code jdtls --stdio}.
  *
- * <p>The installer shell script lives in {@code assets/install-java-lsp.sh} inside the .gpl package
- * and is read at runtime through the plugin's own Android Context; we never duplicate it as a Java
- * string constant. {@code RawCommand} embeds that script into a single heredoc and executes it -
- * the same as running {@code bash install.sh} by hand.
+ * <p>jdtls is the reference implementation of a Java language server, backed by Eclipse JDT: it
+ * provides completions, hover, diagnostics, document/workspace symbols, formatting, code actions,
+ * references, rename, type hierarchies and full project-awareness (Maven/Gradle classpath). The
+ * installer shell script lives in {@code assets/install-java-lsp.sh} and is read at runtime through
+ * the plugin's own Android Context.
  */
 public final class JavaLspPlugin implements GhostPlugin {
 
@@ -60,13 +60,13 @@ public final class JavaLspPlugin implements GhostPlugin {
     return List.of(
         new PluginSetupAction(
             "install-java-language-server",
-            "Install Java language server (jj-language-server)",
+            "Install Java language server (Eclipse JDT)",
             command,
-            "Installs Node.js (if missing or <18) and jj-language-server - Julien Dubois's "
-                + "pure-TypeScript Java LSP - into the proot rootfs via npm (default registry, "
-                + "npmmirror.com as fallback). No JVM is needed. Provides completions, hover, "
-                + "diagnostics, document symbols, formatting, code actions, references, rename "
-                + "and more for .java files."));
+            "Locates the existing Eclipse JDT Language Server (jdtls) installation "
+                + "in the proot rootfs (searches ~/jdtls, /opt/jdtls and more), ensures "
+                + "Java 21+ is available, and creates the /usr/local/bin/java-language-server "
+                + "wrapper. Provides completions, hover, diagnostics, document symbols, "
+                + "formatting, code actions, references, rename and more for .java files."));
   }
 
   @Override
@@ -88,8 +88,8 @@ public final class JavaLspPlugin implements GhostPlugin {
         .getLogger()
         .info(
             provider.isInstalled()
-                ? "jj-language-server found in rootfs"
-                : "jj-language-server not installed yet; run the setup action from the Plugin Manager");
+                ? "jdtls wrapper found in rootfs"
+                : "jdtls not installed yet; run the setup action from the Plugin Manager");
   }
 
   private static String readAsset(PluginContext context, String name) {

@@ -10,8 +10,9 @@ import ir.hanzodev1375.ghostide.ide.api.LspServerRequest;
 import ir.hanzodev1375.ghostide.ide.ui.api.ProotProcessLauncher;
 
 /**
- * Routes {@code .java} files to jj-language-server (Julien Dubois's pure-TypeScript Java language
- * server) running inside the host's proot rootfs.
+ * Routes {@code .java} files to Eclipse JDT Language Server (jdtls) running inside the host's proot
+ * rootfs. The {@code /usr/local/bin/java-language-server} wrapper produced by the setup action
+ * already appends {@code --stdio}; no extra arguments are forwarded.
  */
 public final class JavaLspProvider implements LspServerProvider {
 
@@ -30,7 +31,7 @@ public final class JavaLspProvider implements LspServerProvider {
 
   @Override
   public String getDisplayName() {
-    return "jj-language-server";
+    return "Eclipse JDT Language Server";
   }
 
   public boolean isInstalled() {
@@ -50,8 +51,6 @@ public final class JavaLspProvider implements LspServerProvider {
 
   private LspServerConnection connect(LspServerRequest request) {
     return launcher.launch(
-        request.projectRoot().getAbsolutePath(),
-        GUEST_EXECUTABLE,
-        Collections.singletonList("--stdio"));
+        request.projectRoot().getAbsolutePath(), GUEST_EXECUTABLE, Collections.emptyList());
   }
 }
