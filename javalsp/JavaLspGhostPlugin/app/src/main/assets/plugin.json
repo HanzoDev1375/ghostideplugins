@@ -1,0 +1,9 @@
+{
+  "id": "com.javalsp.ghostide",
+  "name": "Java LSP",
+  "version": "1.0.0",
+  "entryClass": "com.javalsp.ghostide.JavaLspPlugin",
+  "description": "Adds Java language support (completion, hover, diagnostics, document symbols, formatting, code actions and more) by running jj-language-server - Julien Dubois's pure-TypeScript Java LSP - inside the sandboxed Linux rootfs. No JVM needed, requires Node.js.",
+  "minHostVersion": 0,
+  "icon": "java.png"
+}
